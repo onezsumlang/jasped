@@ -13,6 +13,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="<?= base_url() ?>assets/css/styles.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  
+
 </head>
 
 <body>
@@ -33,7 +36,22 @@
               <path d="M21 21l-5.2-5.2" />
             </svg>
           </a>
+          <?php 
+            if($this->session->userdata('logged_in') == true){
+          ?>
+          <a class="btn btn-sm" href="<?=base_url()?>account">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+            </svg>
+            <?=strtok($this->session->userdata('fullname')," ")?>
+          </a>
+          <?php
+            }else{
+          ?>
           <a class="btn btn-sm btn-outline-secondary" href="<?=base_url()?>auth">Masuk / Daftar</a>
+          <?php 
+            }
+          ?>
         </div>
       </div>
     </header>
@@ -51,3 +69,7 @@
       </nav>
     </div>
   </div>
+
+  <?php 
+    // print_r($this->session->userdata());
+  ?>
