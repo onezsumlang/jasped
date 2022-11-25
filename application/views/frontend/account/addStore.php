@@ -35,7 +35,7 @@
       <div class="row">
         <div class="col-md-4">
           <h5>Tambah Toko</h5>
-          <form class="needs-validation" action="<?=base_url()?>account/doAddStore" method="post" novalidate>
+          <form class="needs-validation" action="<?=base_url()?>account/doAddStore" method="post" enctype="multipart/form-data" novalidate>
             <div class="row g-3">
               <div class="col-12">
                 <label for="storeName" class="form-label">Nama Toko</label>
@@ -62,6 +62,22 @@
                   <option value="Jakarta Barat" <?=set_value('city') == "Jakarta Barat" ? "selected" : ""?>>Jakarta Barat</option>
                 </select>
                 <small class="fieldError text-danger"><?= form_error('city') ?></small>
+              </div>
+              <div class="col-12">
+                <label for="image" class="form-label">Gambar Toko</label>
+                <img src="<?= base_url() ?>assets/images/add-photo.jpg" style="width:100%;" id="preview_image" />
+                <input type="file" accept="image/*"  class="form-control" id="image" name="image" placeholder="Gambar Toko" value="<?= set_value('image') ?>" onchange="preview_imageone(event)">
+                <small class="fieldError text-danger"><?= form_error('image') ?></small>
+                <script type='text/javascript'>
+                  function preview_imageone(event) {
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                      var output = document.getElementById('preview_image');
+                      output.src = reader.result;
+                    }
+                    reader.readAsDataURL(event.target.files[0]);
+                  }
+                </script>
               </div>
             </div>
             <hr class="my-3">
@@ -112,7 +128,7 @@
                   }else{
                 ?>
                 <tr>
-                  <td colspan="4">Tidak ada toko</td>
+                  <td colspan="4">Tidak ada data</td>
                 </tr>
                 <?php
                   }

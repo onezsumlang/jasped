@@ -99,6 +99,40 @@ $config = array(
         'required'  => '%s harus diisi'
       )
     )
-  )
+  ),
+  'addService' => array(
+    array(
+      'field'   => 'itemCategoryId',
+      'label'   => 'Kategori',
+      'rules'   => 'trim|required',
+      'errors'  => array(
+        'required'  => '%s harus dipilih'
+      )
+    ),
+    array(
+      'field'   => 'itemName',
+      'label'   => 'Nama Jasa',
+      'rules'   => 'trim|required',
+      'errors'  => array(
+        'required'  => '%s harus diisi'
+      )
+    ),
+    array(
+      'field'   => 'itemPrice',
+      'label'   => 'Harga',
+      'rules'   => 'trim|required',
+      'errors'  => array(
+        'required'  => '%s harus diisi'
+      )
+    ),
+    array(
+      'field'   => 'itemDescription',
+      'label'   => 'Deskripsi',
+      'rules'   => 'trim|required',
+      'errors'  => array(
+        'required'  => '%s harus diisi'
+      )
+    ),
+  ),
 );
 ?>
